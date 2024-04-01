@@ -35,7 +35,7 @@
                     <td>{{ $producto->descripcion }}</td>
                     <td>{{ $producto->precio }}</td>
                     <td>
-                        <a href="{{ route('products.edit', $producto->id) }}">
+                        <a href="{{ route('products.edit', $producto->id) }}" class="btn btn-primary">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
                         <form action="{{ route('products.destroy', $producto->id) }}" method="POST">

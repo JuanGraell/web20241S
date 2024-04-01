@@ -12,8 +12,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
-        return view('gestion_productos')->with('productos', $productos);
+        $products = Producto::all();
+        return view('gestion_productos')->with('products', $products);
     }
 
     /**
@@ -21,7 +21,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        // Va a la vista crear_productos
+        // Va a la vista crear_products
         return view('crear_productos');
     }
 
@@ -31,14 +31,14 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         // Se crea una instancia
-        $producto = new Producto();
+        $products = new Producto();
         // Se asigna como si fuese un constructor
         // Base de datos = los datos del formulario
-        $producto->nombre = $request->nom;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->save();
-        return redirect()->route('productos.index');
+        $products->nombre = $request->nom;
+        $products->descripcion = $request->descri;
+        $products->precio = $request->precio;
+        $products->save();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -55,8 +55,8 @@ class ProductsController extends Controller
     public function edit(string $id)
     {
         // Se utiliza para consultar los datos a editar
-        $producto = Producto::find($id);
-        return view('editar_productos')->with('producto', $producto);
+        $products = Producto::find($id);
+        return view('editar_productos')->with('products', $products);
     }
 
     /**
@@ -65,12 +65,12 @@ class ProductsController extends Controller
     public function update(Request $request, string $id)
     {
         // Se hace el Update en la base de datos
-        $producto = Product::find($id);
-        $producto->nombre = $request->nom;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->save();
-        return redirect()->route('productos.index');
+        $products = Producto::find($id);
+        $products->nombre = $request->nom;
+        $products->descripcion = $request->descri;
+        $products->precio = $request->precio;
+        $products->save();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -79,8 +79,8 @@ class ProductsController extends Controller
     public function destroy(string $id)
     {
         // Para eliminar un registro de la Base de datos
-        $producto = Producto::find($id);
-        $producto->delete();
-        return redirect()->route('productos.index');
+        $products = Producto::find($id);
+        $products->delete();
+        return redirect()->route('products.index');
     }
 }
